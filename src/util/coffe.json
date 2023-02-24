@@ -1,0 +1,75 @@
+[
+    {   
+        "id": 1,
+        "name": "Expresso Tradicional",
+        "image": "/images/Expresso.png",
+        "description": "O tradicional café feito com água quente e grãos moídos",
+        "price": 9.9,
+        "categories": ["tradicional"]
+    },
+
+    {   
+        "id": 2,
+        "name": "Expresso Americano",
+        "image": "/images/Americano.png",
+        "description": "Expresso diluído, menos intenso que o tradicional",
+        "price": 9.9,
+        "categories": ["tradicional"]
+    }
+
+    ,
+
+    {   
+        "id": 3,
+        "name": "Expresso Cremoso",
+        "image": "/images/ExpressoCremoso.png",
+        "description": "Café expresso tradicional com espuma cremosa",
+        "price": 9.9,
+        "categories": ["tradicional"]
+    },
+
+    {   
+        "id": 4,
+        "name": "Expresso Gelado",
+        "image": "/images/CafeGelado.png",
+        "description": "Bebida preparada com café expresso e cubos de gelo",
+        "price": 9.9,
+        "categories": ["tradicional", "gelado"]
+    },
+
+    {   
+        "id": 5,
+        "name": "Café com Leite",
+        "image": "/images/CafecomLeite.png",
+        "description": "Meio a meio de expresso tradicional com leite vaporizado",
+        "price": 9.9,
+        "categories": ["tradicional", "com leite"]
+    },
+
+    {   
+        "id": 6,
+        "name": "Latte",
+        "image": "/images/Latte.png",
+        "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
+        "price": 9.9,
+        "categories": ["tradicional", "com leite"]
+    },
+
+    {   
+        "id": 7,
+        "name": "Capuccino",
+        "image": "/images/Capuccino.png",
+        "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
+        "price": 9.9,
+        "categories": ["tradicional", "com leite"]
+    },
+
+    {   
+        "id": 8,
+        "name": "Macchiato",
+        "image": "/images/Macchiato.png",
+        "description": "Café expresso misturado com um pouco de leite quente e espuma",
+        "price": 9.9,
+        "categories": ["tradicional", "com leite"]
+    }   
+]

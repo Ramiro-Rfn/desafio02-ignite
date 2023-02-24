@@ -1,12 +1,24 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { Container, HeroContainer, LeftSection, RightSection } from './styles'
+import {
+  CardContainer,
+  CardList,
+  Container,
+  HeroContainer,
+  LeftSection,
+  RightSection
+} from './styles'
 
+import { useState } from 'react'
 import { useTheme } from 'styled-components'
 import coffe from '../../assets/coffe.png'
+import { CoffeCard } from '../../components/CoffeCard'
 import { InfoItem } from '../../components/InfoItems'
+
+import coffesData from '../../util/coffe.json'
 
 export default function Home() {
   const theme = useTheme()
+  const [coffes, setCoffes] = useState(coffesData)
 
   return (
     <Container>
@@ -43,6 +55,16 @@ export default function Home() {
           <img src={coffe} alt="" />
         </RightSection>
       </HeroContainer>
+
+      <CardContainer>
+        <h2>Nossos cafés</h2>
+
+        <CardList>
+          {coffes.map((coffe) => {
+            return <CoffeCard coffe={coffe} key={coffe.id} />
+          })}
+        </CardList>
+      </CardContainer>
     </Container>
   )
 }

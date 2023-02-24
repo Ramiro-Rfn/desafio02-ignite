@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.main`
   background: ${(props) => props.theme['gray-100']};
   width: 100%;
 `
@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const HeroContainer = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 5.875rem;
+  padding: 5.875rem 0;
 
   align-items: center;
 `
@@ -43,4 +43,19 @@ export const LeftSection = styled.div`
 export const RightSection = styled.div`
   max-width: 400px;
   width: 100%;
+`
+export const CardContainer = styled.div`
+  padding-bottom: 5rem;
+
+  h2 {
+    margin: 2rem 0 3.5rem 0;
+    font-size: 2rem;
+    font-weight: 800;
+  }
+`
+
+export const CardList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
 `
