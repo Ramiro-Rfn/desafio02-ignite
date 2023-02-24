@@ -1,9 +1,9 @@
-import { Container } from "./styles";
+import { Container } from './styles'
 
-export default function Checkout(){
-    return (
-        <Container>
-            <h1>Checkout Page</h1>
-        </Container>
-    )
+export default function Checkout() {
+  return (
+    <Container>
+      <h1>Checkout Page</h1>
+    </Container>
+  )
 }
