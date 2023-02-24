@@ -47,7 +47,7 @@ export const RightSection = styled.div`
 export const CardContainer = styled.div`
   padding-bottom: 5rem;
 
-  h2 {
+  > h2 {
     margin: 2rem 0 3.5rem 0;
     font-size: 2rem;
     font-weight: 800;
