@@ -9,7 +9,6 @@ interface InfoItemProps {
 }
 
 export function InfoItem({ Icon, color, children }: InfoItemProps) {
-  console.log(color)
   return (
     <InfoItemContainer color={color}>
       <span>

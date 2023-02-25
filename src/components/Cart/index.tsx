@@ -1,43 +1,46 @@
 /* eslint-disable prettier/prettier */
 import { Trash } from 'phosphor-react'
+import { useCart } from '../../context/CartContext'
 import {
-    AmountCalculeteContainer,
-    ButtonContainer,
-    CartCardList,
-    CartCoffeCard,
-    CartContainer,
-    IncrementandDecrementButton,
-    SubmitButton
+  AmountCalculeteContainer,
+  ButtonContainer,
+  CartCardList,
+  CartCoffeCard,
+  CartContainer,
+  IncrementandDecrementButton,
+  SubmitButton
 } from './styles'
 
 export function Cart() {
+  const { cartItems, priceTotal, deliveryPrice, totalAmount, removeToCart, decrementCartItem, incrementCartItem } = useCart()
+
   return (
     <CartContainer>
       <h2>Cafés selecionados</h2>
 
       <div>
         <CartCardList>
-          {[1, 2, 3].map((value) => {
+          {cartItems.map((cartItem) => {
             return (
-              <CartCoffeCard key={value}>
-                <img src="/images/Americano.png" alt="" />
+              <CartCoffeCard key={cartItem.id}>
+                <img src={cartItem.image} alt="" />
 
                 <div>
                   <header>
-                    <p>Expresso Tradicional</p>
+                    <p> {cartItem.name} </p>
                     <p>
-                      R$ <span>9,90</span>
+                      R$ <span> {cartItem.price.toFixed(2)} </span>
                     </p>
                   </header>
 
                   <ButtonContainer>
                     <IncrementandDecrementButton>
-                      <button>-</button>
-                      <span>1</span>
-                      <button>+</button>
+                      <button onClick={()=> decrementCartItem(cartItem)}>-</button>
+                      <span> {cartItem.quantity} </span>
+                      <button  onClick={()=> incrementCartItem(cartItem)}>+</button>
                     </IncrementandDecrementButton>
 
-                    <button>
+                    <button onClick={()=> removeToCart(cartItem)}>
                       <Trash /> Remover
                     </button>
                   </ButtonContainer>
@@ -50,17 +53,17 @@ export function Cart() {
         <AmountCalculeteContainer>
           <div>
             <p>Total de itens</p>
-            <p>R$ 9,90</p>
+            <p>R$ {priceTotal.toFixed(2)} </p>
           </div>
 
           <div>
             <p>Entrega</p>
-            <p>R$ 9,90</p>
+            <p>R$ {deliveryPrice.toFixed(2)} </p>
           </div>
 
           <div>
             <p>Total</p>
-            <p>R$ 9,90</p>
+            <p>R$ {totalAmount.toFixed(2)} </p>
           </div>
         </AmountCalculeteContainer>
 

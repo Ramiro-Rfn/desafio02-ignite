@@ -1,10 +1,13 @@
-import { HeaderContainer } from './styles'
+import { HeaderContainer, TotalCartItem } from './styles'
 
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
+import { useCart } from '../../context/CartContext'
 
 export function Header() {
+  const { totalItems } = useCart()
+
   return (
     <HeaderContainer>
       <NavLink to="/">
@@ -18,6 +21,8 @@ export function Header() {
 
         <NavLink to="/checkout">
           <ShoppingCart weight="fill" />
+
+          {totalItems > 0 && <TotalCartItem> {totalItems} </TotalCartItem>}
         </NavLink>
       </div>
     </HeaderContainer>

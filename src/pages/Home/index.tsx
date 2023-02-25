@@ -5,20 +5,19 @@ import {
   Container,
   HeroContainer,
   LeftSection,
+  // eslint-disable-next-line prettier/prettier
   RightSection
 } from './styles'
 
-import { useState } from 'react'
 import { useTheme } from 'styled-components'
 import coffe from '../../assets/coffe.png'
 import { CoffeCard } from '../../components/CoffeCard'
 import { InfoItem } from '../../components/InfoItems'
-
-import coffesData from '../../util/coffe.json'
+import { useCart } from '../../context/CartContext'
 
 export default function Home() {
   const theme = useTheme()
-  const [coffes, setCoffes] = useState(coffesData)
+  const { coffes } = useCart()
 
   return (
     <Container>

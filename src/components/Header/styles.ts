@@ -17,7 +17,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     gap: 1.25rem;
 
-    span {
+    > span {
       height: 2.375rem;
       color: ${(props) => props.theme['purple-500']};
       background: ${(props) => props.theme['purple-300']};
@@ -40,6 +40,25 @@ export const HeaderContainer = styled.header`
       padding: 0.625rem;
       border-radius: 6px;
       gap: 4px;
+
+      position: relative;
     }
   }
+`
+export const TotalCartItem = styled.span`
+  width: 1.5rem;
+  height: 1.5rem;
+
+  border-radius: 99px;
+  font-size: 0.75rem;
+  background: ${(props) => props.theme['yellow-700']};
+  color: ${(props) => props.theme['gray-100']};
+
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
