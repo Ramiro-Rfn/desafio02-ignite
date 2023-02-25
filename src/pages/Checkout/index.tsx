@@ -1,13 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { ShoppingCartSimple } from 'phosphor-react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
 
 import { Cart } from '../../components/Cart'
 import { FormContainer } from '../../components/FormContainer'
 import { useCart } from '../../context/CartContext'
 
-import { Container } from './styles'
+import { CartEmpty, Container } from './styles'
 
 const checkoutFormValidateSchema = zod.object({
   cpf: zod.string().min(1, 'Informe o seu cpf'),
@@ -23,7 +24,7 @@ const checkoutFormValidateSchema = zod.object({
 type CheckoutFormData = zod.infer<typeof checkoutFormValidateSchema>
 
 export default function Checkout() {
-  const { createCheckout } = useCart()
+  const { createCheckout, totalItems } = useCart()
   const navigate = useNavigate()
 
   const checkoutForm = useForm<CheckoutFormData>({
@@ -49,10 +50,21 @@ export default function Checkout() {
   return (
     <Container>
       <FormProvider {...checkoutForm}>
-        <form onSubmit={handleSubmit(handleSubmitForm)}>
-          <FormContainer />
-          <Cart />
-        </form>
+        {totalItems > 0 ? (
+          <form onSubmit={handleSubmit(handleSubmitForm)}>
+            <FormContainer />
+            <Cart />
+          </form>
+        ) : (
+          <CartEmpty>
+            <ShoppingCartSimple size={82} />
+
+            <h3>Seu carrinho de compra está vazio</h3>
+            <p>Adicione um item para ver algo aqui</p>
+
+            <NavLink to="/">Voltar para Home</NavLink>
+          </CartEmpty>
+        )}
       </FormProvider>
     </Container>
   )
