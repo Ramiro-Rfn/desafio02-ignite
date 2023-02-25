@@ -6,6 +6,7 @@ import {
   // eslint-disable-next-line prettier/prettier
   Money
 } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import {
   FormContent,
@@ -19,6 +20,8 @@ import {
 
 export function FormContainer() {
   const theme = useTheme()
+
+  const { register } = useFormContext()
   return (
     <FormContent>
       <h2>Complete seu pedido</h2>
@@ -33,17 +36,25 @@ export function FormContainer() {
         </header>
 
         <div>
-          <Input type="text" placeholder="CPF" />
-          <Input type="text" placeholder="Rua" />
+          <Input type="text" placeholder="CPF" {...register('cpf')} />
+          <Input type="text" placeholder="Rua" {...register('street')} />
 
           <InputGroup>
-            <Input type="text" placeholder="Número" />
-            <Input type="text" placeholder="Complemento" />
+            <Input
+              type="text"
+              placeholder="Número"
+              {...register('phoneNumber')}
+            />
+            <Input
+              type="text"
+              placeholder="Complemento"
+              {...register('complement')}
+            />
           </InputGroup>
           <InputGroup>
-            <Input type="text" placeholder="Bairro" />
-            <Input type="text" placeholder="Cidade" />
-            <Input type="text" placeholder="UF" />
+            <Input type="text" placeholder="Bairro" {...register('district')} />
+            <Input type="text" placeholder="Cidade" {...register('city')} />
+            <Input type="text" placeholder="UF" {...register('uf')} />
           </InputGroup>
         </div>
       </InputContainer>
@@ -62,20 +73,35 @@ export function FormContainer() {
         <div>
           <SelectGroup>
             <FormLabel>
-              <input name="payMethod" type="radio" id="creditCard" />
+              <input
+                {...register('payMethod')}
+                value="creditCard"
+                type="radio"
+                id="creditCard"
+              />
               <label htmlFor="creditCard">
                 <CreditCard /> Cartão de crédito
               </label>
             </FormLabel>
             <FormLabel>
-              <input name="payMethod" type="radio" id="debitCard" />
+              <input
+                {...register('payMethod')}
+                value="debitCard"
+                type="radio"
+                id="debitCard"
+              />
               <label htmlFor="debitCard">
                 <Bank /> Cartão de debito
               </label>
             </FormLabel>
 
             <FormLabel>
-              <input name="payMethod" type="radio" id="money" />
+              <input
+                {...register('payMethod')}
+                value="money"
+                type="radio"
+                id="money"
+              />
               <label htmlFor="money">
                 <Money /> Dinheiro
               </label>

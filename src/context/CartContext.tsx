@@ -1,9 +1,10 @@
 import {
-    createContext,
-    ReactNode,
-    useContext,
-    useReducer,
-    useState
+  createContext,
+  ReactNode,
+  useContext,
+  useReducer,
+  // eslint-disable-next-line prettier/prettier
+  useState
 } from 'react'
 import { cartReducer } from '../components/reducers/cart/cartReducer'
 
@@ -19,6 +20,17 @@ export type Coffe = {
   quantity?: number
 }
 
+interface CheckoutData {
+  cpf: string
+  street: string
+  phoneNumber: string
+  complement?: string
+  district: string
+  city: string
+  uf: string
+  payMethod: 'money' | 'creditCard' | 'debitCard'
+}
+
 interface CartContextData {
   coffes: Coffe[]
   totalItems: number
@@ -30,6 +42,7 @@ interface CartContextData {
   removeToCart: (coffe: Coffe) => void
   incrementCartItem: (coffe: Coffe) => void
   decrementCartItem: (coffe: Coffe) => void
+  createCheckout: (data: CheckoutData) => void
 }
 
 interface CartContextProviderProps {
@@ -89,6 +102,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     })
   }
 
+  function createCheckout(data: CheckoutData) {
+    const newData = {
+      ...data,
+      cartItems,
+    }
+
+    console.log(newData)
+  }
+
   return (
     <CartContex.Provider
       value={{
@@ -102,6 +124,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         removeToCart,
         decrementCartItem,
         incrementCartItem,
+        createCheckout,
       }}
     >
       {children}

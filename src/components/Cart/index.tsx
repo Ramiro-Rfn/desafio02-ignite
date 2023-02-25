@@ -67,7 +67,7 @@ export function Cart() {
           </div>
         </AmountCalculeteContainer>
 
-        <SubmitButton>Confirmar pedido</SubmitButton>
+        <SubmitButton type='submit'>Confirmar pedido</SubmitButton>
       </div>
     </CartContainer>
   )

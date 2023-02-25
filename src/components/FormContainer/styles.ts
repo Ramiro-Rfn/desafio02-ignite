@@ -42,6 +42,10 @@ const InputBase = styled.input`
   border-radius: 4px;
   background: ${({ theme }) => theme['gray-400']};
   padding: 0 0.75rem;
+
+  &:focus {
+    box-shadow: 0 0 0 1px ${({ theme }) => theme['yellow-500']};
+  }
 `
 
 export const Input = styled(InputBase)`
