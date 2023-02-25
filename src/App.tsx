@@ -5,6 +5,8 @@ import { Router } from './Routes'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/theme/default'
 
+import 'react-toastify/dist/ReactToastify.css'
+
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>

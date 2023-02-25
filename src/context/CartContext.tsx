@@ -7,6 +7,7 @@ import {
   // eslint-disable-next-line prettier/prettier
   useState
 } from 'react'
+import { toast } from 'react-toastify'
 import { cartReducer } from '../components/reducers/cart/cartReducer'
 
 import coffesData from '../util/coffe.json'
@@ -86,6 +87,17 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       payload: {
         coffe,
       },
+    })
+
+    toast.info('Novo Item adicionado ao carrinho', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
     })
   }
 

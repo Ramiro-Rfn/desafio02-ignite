@@ -9,6 +9,7 @@ import {
   RightSection
 } from './styles'
 
+import { ToastContainer } from 'react-toastify'
 import { useTheme } from 'styled-components'
 import coffe from '../../assets/coffe.png'
 import { CoffeCard } from '../../components/CoffeCard'
@@ -21,6 +22,14 @@ export default function Home() {
 
   return (
     <Container>
+      <ToastContainer
+        icon={
+          <ShoppingCart weight="fill" size={24} color={theme['yellow-700']} />
+        }
+        bodyStyle={{ color: theme['gray-700'] }}
+        progressStyle={{ background: theme['yellow-500'] }}
+      />
+
       <HeroContainer>
         <LeftSection>
           <div>
@@ -54,7 +63,6 @@ export default function Home() {
           <img src={coffe} alt="" />
         </RightSection>
       </HeroContainer>
-
       <CardContainer>
         <h2>Nossos cafés</h2>
 
