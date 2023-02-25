@@ -4,10 +4,11 @@ interface InfoItemProps {
   color: string
 }
 
-export const InfoItemContainer = styled.p<InfoItemProps>`
+export const InfoItemContainer = styled.div<InfoItemProps>`
   font-size: 1rem;
   color: ${(props) => props.theme['gray-700']};
   display: flex;
+  margin-bottom: 0 !important;
   align-items: center;
 
   gap: 4px;

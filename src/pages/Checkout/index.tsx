@@ -35,8 +35,14 @@ export default function Checkout() {
   function handleSubmitForm(data: CheckoutFormData) {
     createCheckout(data)
 
-    navigate('/sucess', {
-      state: { payMethod: data.payMethod, street: data.street },
+    navigate('/success', {
+      state: {
+        payMethod: data.payMethod,
+        street: data.street,
+        district: data.district,
+        city: data.city,
+        uf: data.uf,
+      },
     })
   }
 

@@ -14,7 +14,8 @@ export function InfoItem({ Icon, color, children }: InfoItemProps) {
       <span>
         <Icon weight="fill" />
       </span>
-      {children}
+
+      <div>{children}</div>
     </InfoItemContainer>
   )
 }

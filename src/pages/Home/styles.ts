@@ -33,7 +33,7 @@ export const LeftSection = styled.div`
     }
   }
 
-  div:last-child {
+  > div:last-child {
     display: grid;
     grid-template-columns: auto auto;
     gap: 2rem;

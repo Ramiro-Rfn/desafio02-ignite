@@ -100,5 +100,15 @@ export function cartReducer(state: CartState, action: any) {
     })
   }
 
+  if (action.type === 'RESET_CART') {
+    return produce(state, (draft) => {
+      draft.cartItems = []
+
+      draft.totalItems = 0
+
+      draft.priceTotal = 0
+    })
+  }
+
   return state
 }

@@ -2,6 +2,7 @@ import {
   createContext,
   ReactNode,
   useContext,
+  useEffect,
   useReducer,
   // eslint-disable-next-line prettier/prettier
   useState
@@ -54,11 +55,24 @@ const CartContex = createContext({} as CartContextData)
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [coffes, setCoffes] = useState(coffesData)
 
-  const [cart, dispatch] = useReducer(cartReducer, {
-    cartItems: [],
-    totalItems: 0,
-    priceTotal: 0,
-  })
+  const [cart, dispatch] = useReducer(
+    cartReducer,
+    {
+      cartItems: [],
+      totalItems: 0,
+      priceTotal: 0,
+    },
+    (initialState) => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffedelivery:cartstate.1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+      return initialState
+    },
+  )
 
   const { cartItems, totalItems, priceTotal } = cart
 
@@ -81,6 +95,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       payload: {
         coffe,
       },
+    })
+  }
+
+  function resetCart() {
+    dispatch({
+      type: 'RESET_CART',
     })
   }
 
@@ -109,7 +129,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
 
     console.log(newData)
+
+    resetCart()
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cart)
+
+    localStorage.setItem('@coffedelivery:cartstate.1.0.0', stateJSON)
+  }, [cart])
 
   return (
     <CartContex.Provider
